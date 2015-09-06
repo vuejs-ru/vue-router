@@ -1,0 +1,705 @@
+<!DOCTYPE HTML>
+<html lang="ja" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Route オブジェクト &amp; Route マッチング | vue-router ドキュメンテーション npm package</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.2.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./options.html" />
+    
+    
+    <link rel="prev" href="./nested.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="4" data-basepath="." data-revision="Sat Sep 05 2015 21:48:05 GMT-0400 (EDT)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="installation.html">
+            
+                
+                    <a href="./installation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        インストール
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="basic.html">
+            
+                
+                    <a href="./basic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        基本的な使い方
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="nested.html">
+            
+                
+                    <a href="./nested.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Nested Routes
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4" data-path="route.html">
+            
+                
+                    <a href="./route.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Route オブジェクト &amp; Route マッチング
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="options.html">
+            
+                
+                    <a href="./options.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Router オプション
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="view.html">
+            
+                
+                    <a href="./view.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        router-view
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="link.html">
+            
+                
+                    <a href="./link.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        v-link
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="pipeline/index.html">
+            
+                
+                    <a href="./pipeline/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        トランジションパイプライン
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="pipeline/hooks.html">
+            
+                
+                    <a href="./pipeline/hooks.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        トランジションフック
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="pipeline/data.html">
+            
+                
+                    <a href="./pipeline/data.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        data
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="pipeline/activate.html">
+            
+                
+                    <a href="./pipeline/activate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        activate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="pipeline/deactivate.html">
+            
+                
+                    <a href="./pipeline/deactivate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        deactivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="pipeline/can-activate.html">
+            
+                
+                    <a href="./pipeline/can-activate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        canActivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="pipeline/can-deactivate.html">
+            
+                
+                    <a href="./pipeline/can-deactivate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        canDeactivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="pipeline/can-reuse.html">
+            
+                
+                    <a href="./pipeline/can-reuse.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        canReuse
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="api/index.html">
+            
+                
+                    <a href="./api/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        API リファレンス
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="api/properties.html">
+            
+                
+                    <a href="./api/properties.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        Router インスタンスプロパティ
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="api/start.html">
+            
+                
+                    <a href="./api/start.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        router.start
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="api/stop.html">
+            
+                
+                    <a href="./api/stop.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        router.stop
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="api/map.html">
+            
+                
+                    <a href="./api/map.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        router.map
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="api/on.html">
+            
+                
+                    <a href="./api/on.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        router.on
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="api/go.html">
+            
+                
+                    <a href="./api/go.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        router.go
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="api/replace.html">
+            
+                
+                    <a href="./api/replace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        router.replace
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="api/redirect.html">
+            
+                
+                    <a href="./api/redirect.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        router.redirect
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.9" data-path="api/alias.html">
+            
+                
+                    <a href="./api/alias.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.9.</b>
+                        
+                        router.alias
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.10" data-path="api/before-each.html">
+            
+                
+                    <a href="./api/before-each.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.10.</b>
+                        
+                        router.beforeEach
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.11" data-path="api/after-each.html">
+            
+                
+                    <a href="./api/after-each.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.11.</b>
+                        
+                        router.afterEach
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >vue-router ドキュメンテーション npm package</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="route-%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88-route-%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0">Route &#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8; &amp; Route &#x30DE;&#x30C3;&#x30C1;&#x30F3;&#x30B0;</h1>
+<p>Vue-router &#x306F;&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x542B;&#x3093;&#x3060;&#x30DE;&#x30C3;&#x30C1;&#x30F3;&#x30B0;&#x3057;&#x305F;&#x30D1;&#x30B9;&#x3001;&#x30B9;&#x30BF;&#x30FC;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x3001;&#x305D;&#x3057;&#x3066;&#x30AF;&#x30A8;&#x30EA;&#x6587;&#x5B57;&#x5217;&#x3092;&#x30B5;&#x30DD;&#x30FC;&#x30C8;&#x3057;&#x307E;&#x3059;&#x3002;&#x5168;&#x3066;&#x306E;&#x30D1;&#x30FC;&#x30B9;&#x3055;&#x308C;&#x305F; route &#x306E;&#x3053;&#x308C;&#x3089;&#x306E;&#x60C5;&#x5831;&#x306F;&#x3001;&#x516C;&#x958B;&#x3055;&#x308C;&#x305F; <strong>Route &#x30B3;&#x30F3;&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</strong> (&#x4EE5;&#x964D;&#x3067;&#x305D;&#x308C;&#x3089;&#x3092; &quot;route&quot; &#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3068;&#x547C;&#x3073;&#x307E;&#x3059;) &#x3067;&#x5229;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;route &#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306F; <code>this.$route</code> &#x3068;&#x3057;&#x3066; vue-router &#x304C;&#x4F7F;&#x7528;&#x53EF;&#x80FD;&#x306B;&#x306A;&#x3063;&#x305F;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x304A;&#x3044;&#x3066;&#x5168;&#x3066;&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306B;&#x5C0E;&#x5165;&#x3055;&#x308C;&#x3001;&#x305D;&#x3057;&#x3066; route &#x30C8;&#x30E9;&#x30F3;&#x30B8;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x5B9F;&#x884C;&#x3055;&#x308C;&#x308B;&#x305F;&#x3073;&#x306B;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p>route &#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x3092;&#x516C;&#x958B;&#x3057;&#x307E;&#x3059;:</p>
+<ul>
+<li><p><strong>$route.path</strong></p>
+<p>&#x73FE;&#x5728;&#x306E; route &#x306E;&#x30D1;&#x30B9;&#x3068;&#x7B49;&#x3057;&#x3044;&#x6587;&#x5B57;&#x5217;&#x3001;&#x5E38;&#x306B;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3067;&#x89E3;&#x6C7A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x4F8B;: <code>&quot;/foo/bar&quot;</code></p>
+</li>
+<li><p><strong>$route.params</strong></p>
+<p>&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x306E; key/value &#x306E;&#x30DA;&#x30A2;&#x307E;&#x305F;&#x306F;&#x30B9;&#x30BF;&#x30FC;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x542B;&#x3093;&#x3060;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3002;&#x3088;&#x308A;&#x8A73;&#x7D30;&#x306F;&#x4EE5;&#x4E0B;&#x3067;&#x8AAC;&#x660E;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</li>
+<li><p><strong>$route.query</strong></p>
+<p>query &#x6587;&#x5B57;&#x5217;&#x306E; key/value &#x306E;&#x30DA;&#x30A2;&#x3092;&#x542B;&#x3093;&#x3060;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;<code>/foo?user=1</code> &#x306E;&#x3088;&#x3046;&#x306A;&#x30D1;&#x30B9;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x306F;&#x3001;<code>$route.query.user == 1</code> &#x3092;&#x53D6;&#x5F97;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</li>
+<li><p><strong>$route.router</strong></p>
+<p>&#x3053;&#x306E; route (&#x305D;&#x3057;&#x3066;&#x305D;&#x306E;&#x30AA;&#x30FC;&#x30CA;&#x30FC;&#x81EA;&#x8EAB;&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;) &#x3092;&#x7BA1;&#x7406;&#x3057;&#x3066;&#x3044;&#x308B;&#x30EB;&#x30FC;&#x30BF;&#x30FC;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3002;</p>
+</li>
+</ul>
+<h3 id="%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%81%A7%E3%81%AE%E4%BD%BF%E7%94%A8">&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x3067;&#x306E;&#x4F7F;&#x7528;</h3>
+<p>&#x3042;&#x306A;&#x305F;&#x306E;&#x30B3;&#x30F3;&#x30DD;&#x30FC;&#x30CD;&#x30F3;&#x30C8;&#x306E;&#x30C6;&#x30F3;&#x30D7;&#x30EC;&#x30FC;&#x30C8;&#x5185;&#x90E8;&#x3067;&#x3001;&#x76F4;&#x63A5; <code>$route</code> &#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x306B;&#x30D0;&#x30A4;&#x30F3;&#x30C9;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current route path: {{$route.path}}<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Current route params: {{$route.params | json}}<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<h3 id="route-%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0">Route &#x30DE;&#x30C3;&#x30C1;&#x30F3;&#x30B0;</h3>
+<h4 id="%E5%8B%95%E7%9A%84%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88">&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;</h4>
+<p>&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x306F;&#x5148;&#x982D;&#x306E;&#x30B3;&#x30ED;&#x30F3;(:) &#x3068;&#x30D1;&#x30B9;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x5F62;&#x3067;&#x5B9A;&#x7FA9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;<code>user/:username</code> &#x3067;&#x306E;&#x4F8B;&#x3067;&#x306F;&#x3001;<code>:username</code> &#x306F;&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x3067;&#x3059;&#x3002;<code>/user/foo</code> &#x307E;&#x305F;&#x306F; <code>/user/bar</code> &#x306E;&#x3088;&#x3046;&#x306A;&#x30D1;&#x30B9;&#x306B;&#x30DE;&#x30C3;&#x30C1;&#x3057;&#x307E;&#x3059;&#x3002;&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x542B;&#x3093;&#x3067;&#x3044;&#x308B;&#x30D1;&#x30B9;&#x3068;&#x30DE;&#x30C3;&#x30C1;&#x3055;&#x308C;&#x305F;&#x3068;&#x304D;&#x3001;&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x306F; <code>$route.params</code> &#x5185;&#x90E8;&#x3067;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x4F8B;:</p>
+<pre><code class="lang-js">router.map({
+  <span class="hljs-string">&apos;/user/:username&apos;</span>: {
+    component: {
+      template: <span class="hljs-string">&apos;&lt;p&gt;username is {{$route.params.username}}&lt;/p&gt;&apos;</span>
+    }
+  }
+})
+</code></pre>
+<p>&#x30D1;&#x30B9;&#x306F;&#x8907;&#x6570;&#x306E;&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x3092;&#x542B;&#x3080;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x3001;&#x305D;&#x3057;&#x3066;&#x305D;&#x308C;&#x3089;&#x3054;&#x3068;&#x306B; <code>$route.params</code> &#x306B; key/value &#x306E;&#x30DA;&#x30A2;&#x3068;&#x3057;&#x3066;&#x4FDD;&#x5B58;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x4F8B;:</p>
+<table>
+<thead>
+<tr>
+<th>&#x30D1;&#x30BF;&#x30FC;&#x30F3;</th>
+<th>&#x30DE;&#x30C3;&#x30C1;&#x3057;&#x305F;&#x30D1;&#x30B9;</th>
+<th>$route.params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/user/:username</td>
+<td>/user/evan</td>
+<td><code>{ username: &apos;evan&apos; }</code></td>
+</tr>
+<tr>
+<td>/user/:username/post/:post_id</td>
+<td>/user/evan/post/123</td>
+<td><code>{ username: &apos;evan&apos;, post_id: 123 }</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88">&#x30B9;&#x30BF;&#x30FC;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;</h4>
+<p>&#x52D5;&#x7684;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x306F;&#x30D1;&#x30B9;&#x3067;&#x5358;&#x4E00;&#x306E;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x307F;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x3082;&#x306E;&#x306E;&#x3001;&#x30B9;&#x30BF;&#x30FC;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x306F;&#x57FA;&#x672C;&#x7684;&#x306B;&#x305D;&#x308C;&#x306E;&quot;&#x8CAA;&#x6B32;(greedy)&quot;&#x30D0;&#x30FC;&#x30B8;&#x30E7;&#x30F3;&#x3067;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;<code>/foo/*bar</code> &#x306F; <code>/foo</code> &#x3067;&#x958B;&#x59CB;&#x3055;&#x308C;&#x308B;&#x5168;&#x3066;&#x306E;&#x3082;&#x306E;&#x30DE;&#x30C3;&#x30C1;&#x3057;&#x307E;&#x3059;&#x3002;&#x30B9;&#x30BF;&#x30FC;&#x30BB;&#x30B0;&#x30E1;&#x30F3;&#x30C8;&#x306B;&#x3088;&#x3063;&#x3066;&#x4E00;&#x81F4;&#x3057;&#x305F;&#x90E8;&#x5206;&#x306F;&#x3001;<code>$route.params</code> &#x3067;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x4F8B;:</p>
+<table>
+<thead>
+<tr>
+<th>&#x30D1;&#x30BF;&#x30FC;&#x30F3;</th>
+<th>&#x30DE;&#x30C3;&#x30C1;&#x3057;&#x305F;&#x30D1;&#x30B9;</th>
+<th>$route.params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/user/*any</td>
+<td>/user/a/b/c</td>
+<td><code>{ any: &apos;a/b/c&apos; }</code></td>
+</tr>
+<tr>
+<td>/foo/*any/bar</td>
+<td>/foo/a/b/bar</td>
+<td><code>{ any: &apos;a/b&apos; }</code></td>
+</tr>
+</tbody>
+</table>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./nested.html" class="navigation navigation-prev " aria-label="Previous page: Nested Routes"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./options.html" class="navigation navigation-next " aria-label="Next page: Router オプション"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

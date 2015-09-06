@@ -1,0 +1,651 @@
+<!DOCTYPE HTML>
+<html lang="ja" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>router.beforeEach | vue-router ドキュメンテーション npm package</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.2.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../api/after-each.html" />
+    
+    
+    <link rel="prev" href="../api/alias.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="9.10" data-basepath=".." data-revision="Sat Sep 05 2015 21:48:05 GMT-0400 (EDT)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="installation.html">
+            
+                
+                    <a href="../installation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        インストール
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="basic.html">
+            
+                
+                    <a href="../basic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        基本的な使い方
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="nested.html">
+            
+                
+                    <a href="../nested.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Nested Routes
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="route.html">
+            
+                
+                    <a href="../route.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Route オブジェクト &amp; Route マッチング
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="options.html">
+            
+                
+                    <a href="../options.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Router オプション
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="view.html">
+            
+                
+                    <a href="../view.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        router-view
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="link.html">
+            
+                
+                    <a href="../link.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        v-link
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="pipeline/index.html">
+            
+                
+                    <a href="../pipeline/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        トランジションパイプライン
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="pipeline/hooks.html">
+            
+                
+                    <a href="../pipeline/hooks.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        トランジションフック
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="pipeline/data.html">
+            
+                
+                    <a href="../pipeline/data.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        data
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="pipeline/activate.html">
+            
+                
+                    <a href="../pipeline/activate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        activate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="pipeline/deactivate.html">
+            
+                
+                    <a href="../pipeline/deactivate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        deactivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="pipeline/can-activate.html">
+            
+                
+                    <a href="../pipeline/can-activate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        canActivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="pipeline/can-deactivate.html">
+            
+                
+                    <a href="../pipeline/can-deactivate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        canDeactivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="pipeline/can-reuse.html">
+            
+                
+                    <a href="../pipeline/can-reuse.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        canReuse
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="api/index.html">
+            
+                
+                    <a href="../api/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        API リファレンス
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="api/properties.html">
+            
+                
+                    <a href="../api/properties.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        Router インスタンスプロパティ
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="api/start.html">
+            
+                
+                    <a href="../api/start.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        router.start
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="api/stop.html">
+            
+                
+                    <a href="../api/stop.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        router.stop
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="api/map.html">
+            
+                
+                    <a href="../api/map.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        router.map
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="api/on.html">
+            
+                
+                    <a href="../api/on.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        router.on
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="api/go.html">
+            
+                
+                    <a href="../api/go.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        router.go
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="api/replace.html">
+            
+                
+                    <a href="../api/replace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        router.replace
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="api/redirect.html">
+            
+                
+                    <a href="../api/redirect.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        router.redirect
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.9" data-path="api/alias.html">
+            
+                
+                    <a href="../api/alias.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.9.</b>
+                        
+                        router.alias
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="9.10" data-path="api/before-each.html">
+            
+                
+                    <a href="../api/before-each.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.10.</b>
+                        
+                        router.beforeEach
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.11" data-path="api/after-each.html">
+            
+                
+                    <a href="../api/after-each.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.11.</b>
+                        
+                        router.afterEach
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >vue-router ドキュメンテーション npm package</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="-router-beforeeach-hook"><code>router.beforeEach(hook)</code></h1>
+<p>&#x5168;&#x3066;&#x306E; route &#x30C8;&#x30E9;&#x30F3;&#x30B8;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x958B;&#x59CB;&#x3059;&#x308B;&#x524D;&#x306B;&#x547C;&#x3070;&#x308C;&#x308B;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x30D3;&#x30D5;&#x30A9;&#x30FC;&#x30D5;&#x30C3;&#x30AF; (global before hook) &#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x308C;&#x306F;&#x3001;&#x30C8;&#x30E9;&#x30F3;&#x30B8;&#x30B7;&#x30E7;&#x30F3;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x5168;&#x4F53;&#x306E;&#x524D;&#x3067;&#x3001;&#x3082;&#x3057;&#x3001;&#x30D5;&#x30C3;&#x30AF;&#x304C;&#x30C8;&#x30E9;&#x30F3;&#x30B8;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x62D2;&#x5426;&#x3059;&#x308B;&#x5834;&#x5408;&#x3001;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x306F;&#x672C;&#x5F53;&#x306B;&#x958B;&#x59CB;&#x3055;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+<p>&#x4E00;&#x5EA6;&#x30D5;&#x30C3;&#x30AF;&#x3059;&#x308B;&#x524D;&#x306E;&#x552F;&#x4E00;&#x306E;&#x30B0;&#x30ED;&#x30FC;&#x30D0;&#x30EB;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x306B;&#x6CE8;&#x610F;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;&#x3057;&#x304B;&#x3057;&#x306A;&#x304C;&#x3089;&#x3001;&#x3053;&#x306E;&#x30D5;&#x30C3;&#x30AF;&#x5185;&#x90E8;&#x3067;&#x3042;&#x306A;&#x305F;&#x81EA;&#x8EAB;&#x306E;&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3092;&#x5B9F;&#x88C5;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
+<h3 id="%E5%BC%95%E6%95%B0">&#x5F15;&#x6570;</h3>
+<ul>
+<li><p><code>hook {Function}</code></p>
+<p>hook &#x95A2;&#x6570;&#x306F;<a href="../pipeline/hooks.html#transition-object">&#x30C8;&#x30E9;&#x30F3;&#x30B8;&#x30B7;&#x30E7;&#x30F3;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;</a>&#x306A;&#x5358;&#x4E00;&#x306E;&#x5F15;&#x6570;&#x3092;&#x53D7;&#x4FE1;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</li>
+</ul>
+<h3 id="%E4%BE%8B">&#x4F8B;</h3>
+<p>&#x57FA;&#x672C;</p>
+<pre><code class="lang-js">router.beforeEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">transition</span>) </span>{
+  <span class="hljs-keyword">if</span> (transition.to.path === <span class="hljs-string">&apos;/forbidden&apos;</span>) {
+    transition.abort()
+  } <span class="hljs-keyword">else</span> {
+    transition.next()
+  }
+})
+</code></pre>
+<p>Promise + ES6</p>
+<pre><code class="lang-js">router.beforeEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">{ to, next }</span>) </span>{
+  <span class="hljs-keyword">if</span> (to.path === <span class="hljs-string">&apos;/auth-required&apos;</span>) {
+    <span class="hljs-comment">// true &#x307E;&#x305F;&#x306F; false &#x3067;&#x89E3;&#x6C7A;&#x3059;&#x308B; Promise &#x3092;&#x8FD4;&#x3057;&#x307E;&#x3059;</span>
+    <span class="hljs-keyword">return</span> AuthService.isLoggedIn()
+  } <span class="hljs-keyword">else</span> {
+    next()
+  }
+})
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../api/alias.html" class="navigation navigation-prev " aria-label="Previous page: router.alias"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../api/after-each.html" class="navigation navigation-next " aria-label="Next page: router.afterEach"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

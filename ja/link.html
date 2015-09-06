@@ -1,0 +1,648 @@
+<!DOCTYPE HTML>
+<html lang="ja" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>v-link | vue-router ドキュメンテーション npm package</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.2.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./pipeline/index.html" />
+    
+    
+    <link rel="prev" href="./view.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="7" data-basepath="." data-revision="Sat Sep 05 2015 21:48:05 GMT-0400 (EDT)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="installation.html">
+            
+                
+                    <a href="./installation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        インストール
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="basic.html">
+            
+                
+                    <a href="./basic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        基本的な使い方
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="nested.html">
+            
+                
+                    <a href="./nested.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Nested Routes
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="route.html">
+            
+                
+                    <a href="./route.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Route オブジェクト &amp; Route マッチング
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="options.html">
+            
+                
+                    <a href="./options.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Router オプション
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="view.html">
+            
+                
+                    <a href="./view.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        router-view
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="7" data-path="link.html">
+            
+                
+                    <a href="./link.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        v-link
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="pipeline/index.html">
+            
+                
+                    <a href="./pipeline/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        トランジションパイプライン
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="pipeline/hooks.html">
+            
+                
+                    <a href="./pipeline/hooks.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        トランジションフック
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="pipeline/data.html">
+            
+                
+                    <a href="./pipeline/data.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        data
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="pipeline/activate.html">
+            
+                
+                    <a href="./pipeline/activate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        activate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="pipeline/deactivate.html">
+            
+                
+                    <a href="./pipeline/deactivate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        deactivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="pipeline/can-activate.html">
+            
+                
+                    <a href="./pipeline/can-activate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        canActivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="pipeline/can-deactivate.html">
+            
+                
+                    <a href="./pipeline/can-deactivate.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        canDeactivate
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="pipeline/can-reuse.html">
+            
+                
+                    <a href="./pipeline/can-reuse.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        canReuse
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="api/index.html">
+            
+                
+                    <a href="./api/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        API リファレンス
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="api/properties.html">
+            
+                
+                    <a href="./api/properties.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        Router インスタンスプロパティ
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="api/start.html">
+            
+                
+                    <a href="./api/start.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        router.start
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="api/stop.html">
+            
+                
+                    <a href="./api/stop.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        router.stop
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="api/map.html">
+            
+                
+                    <a href="./api/map.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        router.map
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="api/on.html">
+            
+                
+                    <a href="./api/on.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        router.on
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="api/go.html">
+            
+                
+                    <a href="./api/go.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        router.go
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="api/replace.html">
+            
+                
+                    <a href="./api/replace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        router.replace
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="api/redirect.html">
+            
+                
+                    <a href="./api/redirect.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        router.redirect
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.9" data-path="api/alias.html">
+            
+                
+                    <a href="./api/alias.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.9.</b>
+                        
+                        router.alias
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.10" data-path="api/before-each.html">
+            
+                
+                    <a href="./api/before-each.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.10.</b>
+                        
+                        router.beforeEach
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.11" data-path="api/after-each.html">
+            
+                
+                    <a href="./api/after-each.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.11.</b>
+                        
+                        router.afterEach
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >vue-router ドキュメンテーション npm package</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="v-link">v-link</h1>
+<p>&#x4EE5;&#x4E0B;&#x306E;&#x7406;&#x7531;&#x306E;&#x305F;&#x3081;&#x3001;vue-router &#x304C;&#x4F7F;&#x7528;&#x53EF;&#x80FD;&#x306B;&#x306A;&#x3063;&#x305F;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5185;&#x90E8;&#x3067;&#x30CA;&#x30D3;&#x30B2;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x30CF;&#x30F3;&#x30C9;&#x30EA;&#x30F3;&#x30B0;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B; <code>v-link</code> &#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;:</p>
+<ul>
+<li><p>HTML5 history &#x30E2;&#x30FC;&#x30C9; &#x3068; hash &#x30E2;&#x30FC;&#x30C9;&#x4E21;&#x65B9;&#x3067;&#x540C;&#x3058;&#x3088;&#x3046;&#x306B;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x305F;&#x3081;&#x3001;&#x3082;&#x3057;&#x3044;&#x3064;&#x304B;&#x30E2;&#x30FC;&#x30C9;&#x3092;&#x5207;&#x308A;&#x66FF;&#x3048;&#x308B;&#x3053;&#x3068;&#x306B;&#x6C7A;&#x3081;&#x305F;&#x5834;&#x5408;&#x3001;&#x307E;&#x305F;&#x3001;&#x30EB;&#x30FC;&#x30BF;&#x30FC;&#x304C; IE9 &#x3067;&#x306F; hash &#x30E2;&#x30FC;&#x30C9;&#x306B;&#x30D5;&#x30A9;&#x30FC;&#x30EB;&#x30D0;&#x30C3;&#x30AF;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x4F55;&#x3082;&#x5909;&#x66F4;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+</li>
+<li><p>HTML5 history &#x30E2;&#x30FC;&#x30C9;&#x3067;&#x306F;&#x3001;<code>v-link</code> &#x306F;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x304C;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x30EA;&#x30ED;&#x30FC;&#x30C9;&#x3059;&#x308B;&#x306E;&#x3092;&#x8A66;&#x884C;&#x3057;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3001;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x306B;&#x5272;&#x308A;&#x8FBC;&#x307F;&#x307E;&#x3059;&#x3002;</p>
+</li>
+<li><p>HTML5 history &#x30E2;&#x30FC;&#x30C9;&#x3067; <code>root</code> &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x3068;&#x304D;&#x3001;<code>v-link</code> &#x306E; URL &#x306B;&#x305D;&#x308C;&#x3092;&#x542B;&#x3081;&#x308B;&#x5FC5;&#x8981;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+</li>
+</ul>
+<h4 id="%E3%82%A2%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%AF%E3%83%A9%E3%82%B9">&#x30A2;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x30EA;&#x30F3;&#x30AF;&#x30AF;&#x30E9;&#x30B9;</h4>
+<p><code>v-link</code> &#x3092;&#x5229;&#x7528;&#x3059;&#x308B;&#x8981;&#x7D20;&#x3067;&#x3001;&#x73FE;&#x5728;&#x306E;&#x30D1;&#x30B9;&#x304C; <code>v-link</code> &#x306E; URL &#x306B;&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x81EA;&#x52D5;&#x7684;&#x306B;&#x5BFE;&#x5FDC;&#x3059;&#x308B;&#x30AF;&#x30E9;&#x30B9;&#x540D;&#x3092;&#x53D6;&#x5F97;&#x3057;&#x307E;&#x3059;:</p>
+<ul>
+<li><p><code>.v-link-active</code> &#x30AF;&#x30E9;&#x30B9;&#x306F;&#x3001;&#x73FE;&#x5728;&#x306E;&#x30D1;&#x30B9;&#x304C; <code>v-link</code> &#x306E; URL &#x3067;&#x958B;&#x59CB;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x8981;&#x7D20;&#x306B;&#x9069;&#x7528;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;<code>v-link=&quot;/a&quot;</code> &#x306B;&#x3088;&#x308B;&#x8981;&#x7D20;&#x306F;&#x3001;&#x73FE;&#x5728;&#x306E;&#x30D1;&#x30B9;&#x304C; <code>/a</code> &#x3067;&#x958B;&#x59CB;&#x3059;&#x308B;&#x9650;&#x308A;&#x3001;&#x3053;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x3092;&#x53D6;&#x5F97;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</li>
+<li><p><code>.v-link-active-exact</code> &#x30AF;&#x30E9;&#x30B9;&#x306F;&#x3001;&#x73FE;&#x5728;&#x306E;&#x30D1;&#x30B9;&#x304C; <code>v-link</code> &#x306E; URL &#x306E;&#x6B63;&#x78BA;&#x306B;&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x9069;&#x7528;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+</li>
+</ul>
+<p>&#x30A2;&#x30AF;&#x30C6;&#x30A3;&#x30D6;&#x30EA;&#x30F3;&#x30AF;&#x30AF;&#x30E9;&#x30B9;&#x540D;&#x306F;&#x30EB;&#x30FC;&#x30BF;&#x30FC;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x4F5C;&#x6210;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;<code>activeLinkClass</code> &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3067;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x6B63;&#x78BA;&#x306B;&#x30DE;&#x30C3;&#x30C1;&#x3059;&#x308B;&#x30AF;&#x30E9;&#x30B9;&#x306F;&#x3001;&#x5358;&#x306B;&#x63D0;&#x4F9B;&#x3055;&#x308C;&#x305F;&#x30AF;&#x30E9;&#x30B9;&#x540D;&#x306B; <code>-exact</code> &#x63A5;&#x5C3E;&#x8F9E;(postfix) &#x3092;&#x8FFD;&#x52A0;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<h4 id="%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85">&#x305D;&#x306E;&#x4ED6;&#x306E;&#x6CE8;&#x610F;&#x4E8B;&#x9805;</h4>
+<ul>
+<li><p><code>v-link</code> &#x306F; <code>&lt;a&gt;</code> &#x8981;&#x7D20;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x81EA;&#x52D5;&#x7684;&#x306B; <code>href</code> &#x5C5E;&#x6027;&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</li>
+<li><p><code>v-link</code> &#x306F;<a href="http://vuejs.org/guide/directives.html#Literal_Directives" target="_blank">&#x30EA;&#x30C6;&#x30E9;&#x30EB;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C6;&#x30A3;&#x30D6;</a>&#x306E;&#x305F;&#x3081;&#x3001;mustache &#x30BF;&#x30B0;&#x3092;&#x542B;&#x3080;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x4F8B;: <code>v-link=&quot;/user/{{user.name}}&quot;</code></p>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./view.html" class="navigation navigation-prev " aria-label="Previous page: router-view"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./pipeline/index.html" class="navigation navigation-next " aria-label="Next page: トランジションパイプライン"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
