@@ -4,6 +4,8 @@ export default function (Vue, Router) {
 
   /**
    * Register a map of top-level paths.
+   *
+   * @param {Object} map
    */
 
   Router.prototype.map = function (map) {
@@ -63,7 +65,7 @@ export default function (Vue, Router) {
    */
 
   Router.prototype.beforeEach = function (fn) {
-    this._beforeEachHook = fn
+    this._beforeEachHooks.push(fn)
   }
 
   /**
@@ -73,19 +75,33 @@ export default function (Vue, Router) {
    */
 
   Router.prototype.afterEach = function (fn) {
-    this._afterEachHook = fn
+    this._afterEachHooks.push(fn)
   }
 
   /**
    * Navigate to a given path.
+   * The path can be an object describing a named path in
+   * the format of { name: '...', params: {}, query: {}}
    * The path is assumed to be already decoded, and will
    * be resolved against root (if provided)
    *
-   * @param {String} path
+   * @param {String|Object} path
    * @param {Boolean} [replace]
    */
 
   Router.prototype.go = function (path, replace) {
+    // handle named routes
+    if (typeof path === 'object') {
+      if (path.name) {
+        var params = path.params || {}
+        if (path.query) {
+          params.queryParams = path.query
+        }
+        path = this._recognizer.generate(path.name, params)
+      } else if (path.path) {
+        path = path.path
+      }
+    }
     this.history.go(path + '', replace)
   }
 

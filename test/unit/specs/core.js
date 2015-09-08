@@ -35,6 +35,34 @@ describe('Core', function () {
     ], done)
   })
 
+  it('go() with object', function (done) {
+    router = new Router({ abstract: true })
+    router.map({
+      '/a/:msg': {
+        name: 'a',
+        component: { template: 'A{{$route.params.msg}}' }
+      },
+      '/b/:msg': {
+        name: 'b',
+        component: { template: 'B{{$route.params.msg}}{{$route.query.msg}}' }
+      }
+    })
+    var App = Vue.extend({
+      template: '<div><router-view></router-view></div>'
+    })
+    router.start(App, el)
+    assertRoutes([
+      [{ path: '/a/A' }, 'AA'],
+      [{ path: '/b/B' }, 'BB'],
+      // relative
+      [{ path: '../a/A' }, 'AA'],
+      [{ path: '../b/B' }, 'BB'],
+      // named routes
+      [{ name: 'a', params: {msg: 'A'}}, 'AA'],
+      [{ name: 'b', params: {msg: 'B'}, query: {msg: 'B'}}, 'BBB']
+    ], done)
+  })
+
   it('matching nested views', function (done) {
     router = new Router({ abstract: true })
     router.map({
@@ -89,11 +117,13 @@ describe('Core', function () {
   })
 
   it('route context', function (done) {
+    Vue.config.silent = true
     router = new Router({ abstract: true })
     router.map({
       '/a/:id': {
+        customField: 'custom',
         component: {
-          template: '{{$route.path}},{{$route.params.id}},{{$route.query.id}}|'
+          template: '{{$route.path}},{{$route.params.id}},{{$route.query.id}},{{$route.customField}}|'
         }
       }
     })
@@ -107,21 +137,24 @@ describe('Core', function () {
         '</div>',
       components: {
         'view-b': {
-          template: '{{$route.path}},{{$route.params.id}},{{$route.query.id}}'
+          template: '{{$route.path}},{{$route.params.id}},{{$route.query.id}},{{$route.customField}}'
         }
       }
     })
     router.start(App, el)
     assertRoutes([
       // no param, no match (only view-b)
-      ['/a', '/a,,'],
+      ['/a', '/a,,,'],
       // params only
-      ['/a/123', '/a/123,123,|/a/123,123,'],
+      ['/a/123', '/a/123,123,,custom|/a/123,123,,custom'],
       // params + query
-      ['/a/123?id=234', '/a/123?id=234,123,234|/a/123?id=234,123,234'],
+      ['/a/123?id=234', '/a/123?id=234,123,234,custom|/a/123?id=234,123,234,custom'],
       // relative query
-      ['?id=345', '/a/123?id=345,123,345|/a/123?id=345,123,345']
-    ], done)
+      ['?id=345', '/a/123?id=345,123,345,custom|/a/123?id=345,123,345,custom']
+    ], function () {
+      Vue.config.silent = false
+      done()
+    })
   })
 
   it('v-link', function (done) {
@@ -207,7 +240,13 @@ describe('Core', function () {
           nextTick(function () {
             expect(linkA.className).toBe('')
             expect(linkB.className).toBe('active')
-            done()
+            router.go('/bcd')
+            nextTick(function () {
+              // #114 should not match
+              expect(linkA.className).toBe('')
+              expect(linkB.className).toBe('')
+              done()
+            })
           })
         })
       })
@@ -415,34 +454,55 @@ describe('Core', function () {
         }
       }
     })
-    var spy = jasmine.createSpy()
+
+    var spy1 = jasmine.createSpy('before hook 1')
     router.beforeEach(function (transition) {
-      spy()
+      spy1()
+      setTimeout(function () {
+        transition.next()
+      }, wait)
+    })
+
+    var spy2 = jasmine.createSpy('before hook 2')
+    router.beforeEach(function (transition) {
+      spy2()
       if (transition.to.path === '/no') {
         setTimeout(function () {
           transition.abort()
           next()
-        }, 100)
+        }, wait)
       } else if (transition.to.path.indexOf('/redirect') > -1) {
         setTimeout(function () {
           transition.redirect('/to/:id')
           next2()
-        }, 100)
+        }, wait)
       } else {
         transition.next()
       }
     })
+
     router.start(App, el)
-    expect(spy).toHaveBeenCalled()
-    expect(router.app.$el.textContent).toBe('default')
-    router.go('/no')
+    expect(spy1).toHaveBeenCalled()
+    expect(spy2).not.toHaveBeenCalled()
+    expect(router.app.$el.textContent).toBe('')
+    setTimeout(function () {
+      expect(spy2).toHaveBeenCalled()
+      expect(router.app.$el.textContent).toBe('default')
+      router.go('/no')
+    }, wait * 2)
     function next () {
+      expect(spy1.calls.count()).toBe(2)
+      expect(spy2.calls.count()).toBe(2)
       expect(router.app.$el.textContent).toBe('default')
       router.go('/redirect/12345')
     }
     function next2 () {
-      expect(router.app.$el.textContent).toBe('to 12345')
-      done()
+      expect(spy1.calls.count()).toBe(4) // go + redirect
+      expect(spy2.calls.count()).toBe(3) // only go at this moment
+      setTimeout(function () {
+        expect(router.app.$el.textContent).toBe('to 12345')
+        done()
+      }, wait * 2)
     }
   })
 
@@ -626,6 +686,47 @@ describe('Core', function () {
           done()
         }, wait * 2)
       }, 0)
+    })
+
+    it('late-rendered view inside conditional blocks', function (done) {
+      var component = {
+        template:
+          '<div>' +
+            '<div v-if="show">' +
+              '<router-view></router-view>' +
+            '</div>' +
+          '</div>',
+        data: function () {
+          return { show: false }
+        },
+        compiled: function () {
+          var self = this
+          setTimeout(function () {
+            self.show = true
+          }, wait)
+        }
+      }
+      router = new Router({
+        abstract: true
+      })
+      router.map({
+        '/a': {
+          component: component,
+          subRoutes: {
+            '/b': {
+              component: {
+                template: 'Rendered!'
+              }
+            }
+          }
+        }
+      })
+      router.start(Vue.extend(component), el)
+      router.go('/a/b')
+      setTimeout(function () {
+        expect(router.app.$el.textContent).toBe('Rendered!')
+        done()
+      }, wait * 3)
     })
   }
 

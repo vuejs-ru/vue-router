@@ -22,7 +22,10 @@ export default function (Vue, Router) {
       path: path,
       handler: handler
     })
-    this._recognizer.add(segments)
+    this._recognizer.add(segments, {
+      as: handler.name
+    })
+    // add sub routes
     if (handler.subRoutes) {
       for (let subPath in handler.subRoutes) {
         // recursively walk all sub routes
@@ -150,15 +153,19 @@ export default function (Vue, Router) {
     }
 
     // check global before hook
-    let before = this._beforeEachHook
+    let beforeHooks = this._beforeEachHooks
     let startTransition = () => {
       transition.start(() => {
         this._postTransition(route, state, anchor)
       })
     }
 
-    if (before) {
-      transition.callHook(before, null, startTransition, true)
+    if (beforeHooks.length) {
+      transition.runQueue(beforeHooks, (hook, _, next) => {
+        if (transition === this._currentTransition) {
+          transition.callHook(hook, null, next, true)
+        }
+      }, startTransition)
     } else {
       startTransition()
     }
@@ -195,12 +202,13 @@ export default function (Vue, Router) {
       })
     }
     // call global after hook
-    if (this._afterEachHook) {
-      this._afterEachHook.call(null, {
+    if (this._afterEachHooks.length) {
+      this._afterEachHooks.forEach(hook => hook.call(null, {
         to: transition.to,
         from: transition.from
-      })
+      }))
     }
+    this._currentTransition.done = true
   }
 
   /**

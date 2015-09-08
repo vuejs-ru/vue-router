@@ -1,4 +1,5 @@
 import { warn } from '../util'
+import { activate } from '../pipeline'
 
 export default function (Vue) {
 
@@ -27,11 +28,20 @@ export default function (Vue) {
       this._isDynamicLiteral = true
       // finally, init by delegating to v-component
       componentDef.bind.call(this)
+
       // does not support keep-alive.
       /* istanbul ignore if */
       if (this.keepAlive) {
         this.keepAlive = false
         warn('<router-view> does not support keep-alive.')
+      }
+      /* istanbul ignore if */
+      if (this.waitForEvent) {
+        this.waitForEvent = null
+        warn(
+          '<router-view> does not support wait-for. Use ' +
+          'the acitvate route hook instead.'
+        )
       }
 
       // all we need to do here is registering this view
@@ -48,6 +58,19 @@ export default function (Vue) {
         // child's activate hook is called after the
         // parent's has resolved.
         parentView.childView = this
+      }
+
+      // handle late-rendered view
+      // two possibilities:
+      // 1. root view rendered after transition has been
+      //    validated;
+      // 2. child view rendered after parent view has been
+      //    activated.
+      var transition = route.router._currentTransition
+      if ((!parentView && transition.done) ||
+          (parentView && parentView.activated)) {
+        var depth = parentView ? parentView.depth + 1 : 0
+        activate(this, transition, depth)
       }
     },
 

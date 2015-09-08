@@ -1,4 +1,4 @@
-import { warn } from './util'
+import util, { warn } from './util'
 import Recognizer from 'route-recognizer'
 import RouterApi from './router/api'
 import RouterInternal from './router/internal'
@@ -57,8 +57,8 @@ export default class Router {
     this._currentTransition = null
     this._previousTransition = null
     this._notFoundHandler = null
-    this._beforeEachHook = null
-    this._afterEachHook = null
+    this._beforeEachHooks = []
+    this._afterEachHooks = []
 
     // feature detection
     this._hasPushState =
@@ -81,7 +81,7 @@ export default class Router {
     this._suppress = suppressTransitionError
 
     // create history object
-    let inBrowser = Router.Vue.util.inBrowser
+    let inBrowser = util.Vue.util.inBrowser
     this.mode = (!inBrowser || this._abstract)
       ? 'abstract'
       : this._history
@@ -118,7 +118,13 @@ Router.install = function (Vue) {
   View(Vue)
   Link(Vue)
   Override(Vue)
-  Router.Vue = Vue
+  util.Vue = Vue
+  // 1.0 only: enable route mixins
+  var strats = Vue.config.optionMergeStrategies
+  if (strats) {
+    // use the same merge strategy as methods (object hash)
+    strats.route = strats.methods
+  }
   Router.installed = true
 }
 

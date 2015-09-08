@@ -1,4 +1,4 @@
-import { getRouteConfig, resolveAsyncComponent } from './util'
+import { getRouteConfig, resolveAsyncComponent, isPromise } from './util'
 
 /**
  * Determine the reusability of an existing router view.
@@ -42,7 +42,9 @@ export function canDeactivate (view, transition, next) {
   if (!hook) {
     next()
   } else {
-    transition.callHook(hook, fromComponent, next, true)
+    transition.callHook(hook, fromComponent, next, {
+      expectBoolean: true
+    })
   }
 }
 
@@ -65,7 +67,9 @@ export function canActivate (handler, transition, next) {
     if (!hook) {
       next()
     } else {
-      transition.callHook(hook, null, next, true)
+      transition.callHook(hook, null, next, {
+        expectBoolean: true
+      })
     }
   })
 }
@@ -100,7 +104,10 @@ export function deactivate (view, transition, next) {
 export function activate (view, transition, depth, cb) {
   let handler = transition.activateQueue[depth]
   if (!handler) {
-    view.setComponent(null)
+    // fix 1.0.0-alpha.3 compat
+    if (view._bound) {
+      view.setComponent(null)
+    }
     cb && cb()
     return
   }
@@ -109,6 +116,9 @@ export function activate (view, transition, depth, cb) {
   let activateHook = getRouteConfig(Component, 'activate')
   let dataHook = getRouteConfig(Component, 'data')
   let waitForData = getRouteConfig(Component, 'waitForData')
+
+  view.depth = depth
+  view.activated = false
 
   // unbuild current component. this step also destroys
   // and removes all nested child views.
@@ -135,7 +145,13 @@ export function activate (view, transition, depth, cb) {
       view.transition(component)
     } else {
       // no transition on first render, manual transition
-      view.setCurrent(component)
+      if (view.setCurrent) {
+        // 0.12 compat
+        view.setCurrent(component)
+      } else {
+        // 1.0
+        view.childVM = component
+      }
       component.$before(view.anchor, null, false)
     }
     cb && cb()
@@ -143,6 +159,7 @@ export function activate (view, transition, depth, cb) {
 
   // called after activation hook is resolved
   let afterActivate = () => {
+    view.activated = true
     // activate the child view
     if (view.childView) {
       exports.activate(view.childView, transition, depth + 1)
@@ -160,7 +177,9 @@ export function activate (view, transition, depth, cb) {
   }
 
   if (activateHook) {
-    transition.callHook(activateHook, component, afterActivate, false, cleanup)
+    transition.callHook(activateHook, component, afterActivate, {
+      cleanup: cleanup
+    })
   } else {
     afterActivate()
   }
@@ -193,11 +212,28 @@ export function reuse (view, transition) {
 
 function loadData (component, transition, hook, cb, cleanup) {
   component.$loadingRouteData = true
-  transition.callHook(hook, component, (data) => {
-    for (let key in data) {
-      component.$set(key, data[key])
+  transition.callHook(hook, component, (data, onError) => {
+    let promises = []
+    Object.keys(data).forEach(key => {
+      let val = data[key]
+      if (isPromise(val)) {
+        promises.push(val.then(resolvedVal => {
+          component.$set(key, resolvedVal)
+        }))
+      } else {
+        component.$set(key, val)
+      }
+    })
+    if (!promises.length) {
+      component.$loadingRouteData = false
+    } else {
+      promises[0].constructor.all(promises).then(_ => {
+        component.$loadingRouteData = false
+      }, onError)
     }
-    component.$loadingRouteData = false
     cb && cb(data)
-  }, false, cleanup)
+  }, {
+    cleanup: cleanup,
+    expectData: true
+  })
 }
